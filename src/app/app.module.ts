@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { LoginComponent } from './componentes/login/login.component';
-import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
-import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
+import { LoginComponent } from './pages/login/login.component';
+import { UsuariosComponent } from './pages/register/usuarios.component';
+import { CabeceraComponent } from './pages/components/nav-bar/cabecera.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import { CuerpoComponent } from './componentes/cuerpo/cuerpo.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {MatRadioModule} from '@angular/material/radio';
     LoginComponent,
     UsuariosComponent,
     CabeceraComponent,
-    CuerpoComponent
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

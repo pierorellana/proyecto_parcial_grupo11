@@ -1,2 +1,5 @@
-<app-cabecera></app-cabecera>
-<router-outlet></router-outlet>
+<ng-container *ngIf="!isLoginPage() && !isRegisterPage()">
+    <app-cabecera></app-cabecera>
+  </ng-container>
+  <router-outlet></router-outlet>
+  

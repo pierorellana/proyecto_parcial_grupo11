@@ -1,0 +1,45 @@
+.productos-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: #F1F1F1;
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 95vh;
+  }
+  
+  .left-section {
+    flex: 1;
+    padding-right: 20px;
+    color: black; 
+  }
+  
+  .right-section {
+    flex: 1;
+  }
+  
+  .black-text-title {
+    color: black;
+    font-weight: bold;
+    font-size: 24px; 
+    margin-bottom: 30px; 
+  }
+  
+  .black-text {
+    color: black;
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 20px; 
+  }
+  
+  .mat-raised-button {
+    background-color: #0f0e17;
+    color: white;
+  }
+
+  .producto-image {
+    width: 100%;
+    border-radius: 15px; 
+  }
+
+  

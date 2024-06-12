@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './componentes/login/login.component';
-import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
-import { CuerpoComponent } from './componentes/cuerpo/cuerpo.component';
+import { LoginComponent } from './pages/login/login.component';
+import { UsuariosComponent } from './pages/register/usuarios.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'cuerpo', pathMatch: 'full' },
-  { path: 'cuerpo', component: CuerpoComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'usuario', component: UsuariosComponent },
-    { path: '**', redirectTo: 'cuerpo', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: UsuariosComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

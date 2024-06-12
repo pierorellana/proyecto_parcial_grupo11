@@ -1,0 +1,21 @@
+<mat-toolbar class="custom-toolbar">
+  <span class="title">Electronics Store</span>
+  <span class="spacer"></span>
+  <nav>
+    <button mat-button class="white-text">Productos</button>
+    <button mat-button class="white-text">Clientes</button>
+    <button mat-button class="white-text">Proveedores</button>
+    <button mat-button class="white-text">Proceso de Compra</button>
+  </nav>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon class="white-text">search</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon class="white-text">shopping_cart</mat-icon>
+    <span class="badge" matBadge="0" matBadgeColor="warn"></span>
+  </button>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon class="white-text">exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
