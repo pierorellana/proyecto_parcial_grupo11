@@ -11,7 +11,8 @@ import { CabeceraComponent } from './pages/components/nav-bar/cabecera.component
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
-import { ProductsComponent } from './pages/products/products.component';
+import { FooterComponent } from './pages/components/footer/footer.component';
+import { ProductsModule } from './pages/products/module/product.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { ProductsComponent } from './pages/products/products.component';
     LoginComponent,
     UsuariosComponent,
     CabeceraComponent,
-    ProductsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     MaterialModule,
+    ProductsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, 
     MatMenuModule,
