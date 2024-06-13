@@ -1,0 +1,441 @@
+<div class="row">
+  <div class="col-md-6">
+    <a class="back-button" routerLink="/cuerpo">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Inicio</span>
+    </a>
+  </div>
+  
+  <div class="col-md-6 text-right">
+    <!-- 
+    <a class="back-button" routerLink="/ordenes">
+      <mat-icon>list</mat-icon>
+      <span>Lista de órdenes</span>
+    </a> -->
+  </div>
+</div>
+
+
+
+<div class="container-wrapper">
+
+    <div class="containeruno">
+  
+        <h2>Información de Contacto</h2>
+        <!-- aqui ingresar nombre del cliente  -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nombre del Cliente</mat-label>
+                <input matInput 
+                  type="text" 
+                  placeholder="Nombre del Cliente" 
+                  [(ngModel)]="cliente" 
+                  name="cliente" 
+                  #clienteRef="ngModel" 
+                required>
+              <mat-error *ngIf="clienteRef.invalid && (clienteRef.dirty || clienteRef.touched)">El nombre del cliente es obligatorio.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <!-- aqui ingresar correo electronico  -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput 
+                type="email" 
+                [(ngModel)]="correoCliente" 
+                name="correoCliente" 
+                #correoClienteRef="ngModel" 
+                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                aria-label="Correo Electrónico"
+              >
+              <mat-error *ngIf="correoClienteRef.invalid && correoClienteRef.errors?.['required']">El correo electrónico es requerido.</mat-error>
+              <mat-error *ngIf="correoClienteRef.invalid && correoClienteRef.errors?.['pattern']">El formato del correo electrónico no es válido.</mat-error>
+              <mat-error *ngIf="correoClienteRef.invalid && correoClienteRef.errors?.['email']">El correo electrónico no es válido.</mat-error>
+              <mat-error *ngIf="correoClienteRef.invalid && correoClienteRef.errors?.['customError']">Debe ser un correo electrónico válido.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        
+  
+        <!-- aquí ingresar numero para contactar  -->
+        <div class="row">
+          <div class="extension-select">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Extensión del País</mat-label>
+              <mat-select 
+                [(ngModel)]="extensionSeleccionada" 
+                name="extensionSeleccionada" 
+                placeholder="Selecciona la extensión"
+              >
+                <mat-option *ngFor="let extension of extensionesTelefonicas" [value]="extension.codigo">
+                  {{ extension.pais }} ({{ extension.codigo }})
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Número de Teléfono</mat-label>
+              <input matInput 
+                type="tel" 
+                placeholder="Número de teléfono" 
+                [(ngModel)]="telefonoCliente" 
+                name="telefonoCliente" 
+                #telefonoClienteRef="ngModel" 
+                required pattern="[0-9]+"
+              >
+              <mat-error *ngIf="telefonoClienteRef.invalid && telefonoClienteRef.errors?.['required']">
+                Este campo es obligatorio.
+              </mat-error>
+              <mat-error *ngIf="telefonoClienteRef.invalid && telefonoClienteRef.errors?.['pattern']">
+                Ingresa solo números.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+        </div>
+        
+        
+  
+  
+        <!-- aqui ubicación  -->
+        <mat-accordion class="mt-3">
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Dirección
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Ciudad</mat-label>
+                        <input matInput type="text" [(ngModel)]="ciudad" name="ciudad" #ciudadRef="ngModel" required aria-label="Ciudad">
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Estado/Provincia</mat-label>
+                    <input matInput 
+                    type="text" 
+                    placeholder="Estado/Provincia" 
+                    [(ngModel)]="estadoProvincia" 
+                    name="estadoProvincia" 
+                    #estadoProvinciaRef="ngModel" required>
+                    <mat-error *ngIf="estadoProvinciaRef.invalid && (estadoProvinciaRef.dirty || estadoProvinciaRef.touched)">El Estado/Provincia es obligatorio.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Dirección de Calle </mat-label>
+                        <input matInput 
+                        type of="text" 
+                        [(ngModel)]="direccionCalle1" 
+                        name="direccionCalle1" 
+                        #direccionCalle1Ref="ngModel" 
+                        required placeholder="Dirección de Calle" 
+                        aria-label="Dirección de Calle">
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Código Postal</mat-label>
+                    <input matInput 
+                    type="text" 
+                    placeholder="Código Postal" 
+                    [(ngModel)]="codigopostal" 
+                    name="codigopostal" 
+                    aria-label="Código Postal">
+                   </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Referencia</mat-label>
+                        <input matInput 
+                        type="text" 
+                        placeholder="Referencia" 
+                        aria-label="Referencia" 
+                        [(ngModel)]="referencia" 
+                        name="referencia">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div *ngIf="ciudadRef.invalid && (ciudadRef.dirty || ciudadRef.touched) || estadoProvinciaRef.invalid && (estadoProvinciaRef.dirty || estadoProvinciaRef.touched) || direccionCalle1Ref.invalid && (direccionCalle1Ref.dirty || direccionCalle1Ref.touched)" class="text-danger">
+                    Por favor, completa todos los campos de dirección.
+                  </div>
+                </div>
+              </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+  
+      <h2>Modo de pago </h2>
+  
+         <!-- modo de pago  -->
+      <mat-accordion class="mt-3">
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Método De Pago
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col">
+                <mat-radio-group 
+                  [(ngModel)]="metodoPago" 
+                  name="metodoPago" 
+                  #metodoPagoRef="ngModel"
+                  required (change)="mostrarCampoPago()">
+                  <mat-radio-button value="paypal"><span>PayPal</span></mat-radio-button>
+                  <mat-radio-button value="tarjeta"><span>Tarjeta de Crédito</span></mat-radio-button>
+                </mat-radio-group>
+                <div *ngIf="metodoPagoRef.invalid && (metodoPagoRef.dirty || metodoPagoRef.touched)" class="text-danger">
+                  Debes seleccionar un método de pago.
+                </div>
+              </div>
+            </div>
+        
+            <!-- Campos de PayPal -->
+        
+            <!-- Campos de PayPal -->
+              <div class="row" *ngIf="metodoPago === 'paypal'">
+                <div class="col">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Correo Electrónico</mat-label>
+                    <input matInput 
+                      type="email" 
+                      placeholder="Correo Electrónico" 
+                      [(ngModel)]="correoPaypal" 
+                      name="correoPaypal"
+                      #correoPaypalRef="ngModel"
+                      required
+                      (ngModelChange)="validarCorreoPaypal()">
+                    <mat-error *ngIf="correoPaypalRef.invalid && correoPaypalRef.errors?.['required']">
+                      Debes proporcionar tu correo electrónico de PayPal.
+                    </mat-error>
+                    <mat-error *ngIf="correoPaypalRef.invalid && correoPaypalRef.errors?.['email']">
+                      El correo electrónico no es válido.
+                    </mat-error>
+                    <mat-error *ngIf="correoPaypalRef.invalid && correoPaypalError">
+                      {{ correoPaypalError }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+
+            
+            <!-- Campos de tarjeta de crédito -->
+   
+            <div class="row" *ngIf="metodoPago === 'tarjeta'">
+              <div class="col">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Nombre en la Tarjeta</mat-label>
+                  <input matInput 
+                    type="text" 
+                    placeholder="Nombre en la Tarjeta" 
+                    [(ngModel)]="nombreTarjeta" 
+                    name="nombreTarjeta" 
+                    #nombreTarjetaRef="ngModel" 
+                  required>
+                  <mat-error *ngIf="nombreTarjetaRef.invalid && (nombreTarjetaRef.dirty || nombreTarjetaRef.touched)">Debes proporcionar el nombre en la tarjeta.</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Número en la Tarjeta</mat-label>
+                  <input matInput 
+                    type="text" 
+                    placeholder="Número en la Tarjeta" 
+                    [(ngModel)]="numeroTarjeta" 
+                    name="numeroTarjeta" 
+                    #numeroTarjetaRef="ngModel" 
+                  required>
+                  <mat-error *ngIf="numeroTarjetaRef.invalid && (numeroTarjetaRef.dirty || numeroTarjetaRef.touched)">Debes proporcionar el número en la tarjeta.</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Fecha de Expiración (MM/AA)</mat-label>
+                  <input matInput 
+                    type="text" 
+                    placeholder="MM/AA" 
+                    [(ngModel)]="expiracionTarjeta" 
+                    name="expiracionTarjeta" 
+                    #expiracionTarjetaRef="ngModel" 
+                  required>
+                  <mat-error *ngIf="expiracionTarjetaRef.invalid && (expiracionTarjetaRef.dirty || expiracionTarjetaRef.touched)">Debes proporcionar la fecha de expiración.</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>CVC</mat-label>
+                  <input matInput 
+                    type="text" 
+                    placeholder="CVC" 
+                    [(ngModel)]="cvcTarjeta" 
+                    name="cvcTarjeta" 
+                    #cvcTarjetaRef="ngModel" 
+                  required>
+                  <mat-error *ngIf="cvcTarjetaRef.invalid && (cvcTarjetaRef.dirty || cvcTarjetaRef.touched)">Debes proporcionar el CVC.</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+        
+  
+  
+  
+        <!-- terminos y condiciones  --> 
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <input type="checkbox" 
+                class="form-check-input" 
+                id="aceptaCondiciones" 
+                [(ngModel)]="aceptaCondiciones" 
+                name="aceptaCondiciones" 
+                #aceptaCondicionesRef="ngModel" 
+                required
+              >
+              <label class="form-check-label" for="aceptaCondiciones">Acepto los términos y condiciones de la solicitud</label>
+              <div *ngIf="aceptaCondicionesRef.invalid && (aceptaCondicionesRef.dirty || aceptaCondicionesRef.touched)" class="text-danger">
+                Debes aceptar los términos y condiciones.
+              </div>
+            </div>
+          </div>
+        </div>
+  
+          <!-- enviar solicitud  -->
+        
+          
+            <div class="col text-center">
+              <button mat-raised-button color="primary" (click)="enviarSolicitud()" class="custom-submit-button">
+                <mat-icon class="button-icon">send</mat-icon>
+                Enviar Solicitud
+              </button>
+            </div>
+          
+          
+
+  
+        <!-- mensaje de envio exitoso   -->
+          <div class="row mt-3" *ngIf="solicitudEnviada">
+            <div class="col">
+              <div class="alert alert-success" role="alert">
+                Solicitud enviada con éxito.
+              </div>
+            </div>
+          </div>
+    </div>
+  
+
+    <div class="checkout-container">
+    <!-- Información del Producto -->
+      <mat-card class="product-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>info</mat-icon> Detalle del Producto
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="product-details-grid">
+            <!-- Tabla de Detalles del Producto -->
+            <mat-table [dataSource]="productoDataSource" class="product-table">
+              <!-- Columnas de la Tabla -->
+              <!-- Columna del Producto -->
+              <ng-container matColumnDef="producto">
+                <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.producto }}</mat-cell>
+              </ng-container>
+              <!-- Columna de la Cantidad -->
+              <ng-container matColumnDef="cantidad">
+                <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                  <mat-icon (click)="decrementarCantidad(item)">remove</mat-icon>
+                  {{ item.cantidad }}
+                  <mat-icon (click)="incrementarCantidad(item)">add</mat-icon>
+                </mat-cell>
+              </ng-container>
+              <!-- Columna del Precio -->
+              <ng-container matColumnDef="precio">
+                <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{ item.precio | currency }}</mat-cell>
+              </ng-container>
+              <!-- Columna de los Botones de Acción -->
+              <ng-container matColumnDef="accion">
+                <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                  <button mat-icon-button color="primary" (click)="verProducto(item)" matTooltip="Ver producto">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="eliminarProducto(item)" matTooltip="Eliminar producto">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <!--
+                  <button mat-icon-button  color="accent" (click)="editarProducto(item)" matTooltip="Editar producto">
+                    <mat-icon>edit</mat-icon>
+                  </button> -->
+                </mat-cell>
+              </ng-container>
+              
+              <!-- Definición de Filas -->
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div class="add-product-container">
+              <button mat-icon-button class="mat-fab" (click)="agregarProducto({})">
+                <mat-icon aria-hidden="false" aria-label="Agregar producto">add</mat-icon>
+              </button>
+              <span class="add-product-text">Agregar Producto</span>
+            </div>
+            
+            
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+
+
+
+      <!-- Tarjeta de Compra -->
+      <mat-card class="purchase-card">
+        <mat-card-header>
+          <mat-card-title class="purchase-card-title">
+            <mat-icon>shopping_cart</mat-icon> Tarjeta de Compra
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list class="purchase-list">
+            <!-- Elementos de la Lista -->
+            <mat-list-item class="purchase-item" *ngFor="let item of productoDataSource.data">
+              <div mat-line><mat-icon>attach_money</mat-icon> Subtotal</div>
+              <div mat-line class="subtotal">{{ subtotal | currency }}</div>
+            </mat-list-item>
+            <mat-list-item class="purchase-item" *ngIf="costoEnvio !== 0">
+              <div mat-line><mat-icon>local_shipping</mat-icon> Costo de Envío</div>
+              <div mat-line class="shipping-cost">{{ costoEnvio | currency }}</div>
+            </mat-list-item>
+            <mat-list-item class="purchase-item">
+              <div mat-line class="total-price"><mat-icon>payment</mat-icon> Total a Pagar</div>
+              <div mat-line class="total">{{ subtotal + costoEnvio | currency }}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>
+  
+

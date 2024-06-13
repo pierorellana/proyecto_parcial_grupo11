@@ -1,0 +1,39 @@
+/* Estilos personalizados para la barra de herramientas */
+.custom-toolbar {
+    background-color: #1792a4; 
+    color: #ffffff; 
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px; 
+  }
+  
+  .toolbar-logo {
+    height: 50px; 
+    margin-bottom: -10px; 
+  }
+  
+  .toolbar-title {
+    font-size: 14px; 
+    margin-top: -5px; 
+  }
+  
+  /* Estilos para los botones del toolbar */
+  .mat-toolbar button.mat-button {
+    color: #ffffff; 
+  }
+  
+  .mat-toolbar button.mat-button:hover {
+    background-color: #44b4c4;
+  }
+  
+  /* Estilo para el span que ocupa el espacio entre los elementos */
+  .spacer {
+    flex: 1 1 auto;
+  }
+  

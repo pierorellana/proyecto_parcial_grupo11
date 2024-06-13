@@ -1,0 +1,123 @@
+/* Estilo para el contenedor de búsqueda */
+.busqueda {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para los botones de iconos */
+.mat-icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.mat-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+/* Estilo para los botones */
+.mat-raised-button {
+  background-color: #5ebdb2; 
+  color: white;
+  margin-top: 20px;
+}
+
+.mat-raised-button:hover {
+  background-color: #1f8696; 
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Estilo para los íconos */
+mat-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Estilo para el contenedor de las órdenes */
+.ordenes-container {
+  margin-top: 40px;
+  padding: 50px;
+  border: 100px ;
+  border-radius: 20px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1); 
+  background-color: #ffffff; 
+}
+
+.ordenes-container h2 {
+  margin-bottom: 20px;
+  color: #142b3b; 
+}
+
+/* Estilo para el título de la lista de órdenes */
+.headline-medium {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #142b3b;
+}
+
+/* Estilo para los campos de búsqueda */
+.search-form-field {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* Estilo para la entrada de búsqueda */
+.search-input {
+  width: calc(100% - 50px); 
+}
+
+/* Estilo para la tabla de órdenes */
+.mat-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Estilo para las celdas de la tabla */
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+}
+
+/* Estilo para los botones de acción */
+.acciones-button {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #666;
+}
+
+.acciones-button:hover {
+  color: #000; 
+}
+
+/* Estilo para la fila seleccionada */
+.mat-row.selected {
+  background-color: #e0e0e0; 
+}
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #1792a4; 
+  color: #ffffff; 
+  text-decoration: none; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+.back-button mat-icon {
+  vertical-align: middle;
+}
+
+.back-button span {
+  margin-left: 5px; 
+}
+
