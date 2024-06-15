@@ -28,6 +28,8 @@ export class CabeceraComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  //Comentario de prueba
+
   ngOnInit(): void {
     this.cartService.cartItemCount$.subscribe(count => {
       this.cartItemCount = count;
