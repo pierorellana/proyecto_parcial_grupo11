@@ -11,7 +11,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: UsuariosComponent },
-  { path: 'products', loadChildren: () => import('./pages/products/module/product.module').then(m => m.ProductsModule) },
+  { path: 'products', component: ProductsComponent },
+  { path: 'products/computer', component: ComputadorasComponent },
+  { path: 'products/phones', component: CelularesComponent },
+  { path: 'products/accesories', component: AccesoriosComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
