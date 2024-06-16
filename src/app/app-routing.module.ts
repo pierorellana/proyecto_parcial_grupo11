@@ -7,12 +7,14 @@ import { ComputadorasComponent } from './pages/products/components/computadoras/
 import { CelularesComponent } from './pages/products/components/celulares/celulares.component';
 import { AccesoriosComponent } from './pages/products/components/accesorios/accesorios.component';
 import { AdminProductComponent } from './pages/admin-product/admin-product.component';
+import { ClientComponent } from './pages/client/client.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: UsuariosComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'client', component: ClientComponent },
   { path: 'products/computer', component: ComputadorasComponent },
   { path: 'products/phones', component: CelularesComponent },
   { path: 'products/accesories', component: AccesoriosComponent },

@@ -11,15 +11,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   exports: [
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatTableModule,
     MatDialogModule,
-    MatInputModule,
     MatIconModule,
     MatToolbarModule,
     MatBadgeModule,
@@ -27,6 +31,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatListModule,
     MatProgressBarModule,
     DragDropModule,
+    MatRadioModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
 })
 export class MaterialModule {}
