@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SolicitudesService } from '../solicitud/service/solicitudes.service';
-import { ProductoService } from '../productos/service/producto.service';
+// import { ProductoService } from '../productos/service/producto.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -79,7 +79,7 @@ export class SolicitudComponent implements OnInit {
   
 
   constructor(private solicitudesService: SolicitudesService, 
-    private productoService: ProductoService,
+    // private productoService: ProductoService,
     private router: Router) { }
   enviarSolicitud() {
     if (this.validarFormulario()) {
@@ -236,7 +236,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.producto = this.productoService.getProductosDestacados();
+    // this.producto = this.productoService.getProductosDestacados();
     this.actualizarPrecios();
     this.calcularTotal();
   }
