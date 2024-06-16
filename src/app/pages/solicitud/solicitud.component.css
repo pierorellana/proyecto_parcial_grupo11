@@ -1,0 +1,244 @@
+/* Estilos para el botón de regresar */
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #1792a4; 
+  color: #ffffff; 
+  text-decoration: none; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+/* Estilos para cambiar el color del botón al pasar el mouse */
+.back-button:hover {
+  background-color: #44b4c4; 
+  color: #ffffff; 
+}
+
+/* Estilos para el ícono dentro del botón */
+.back-button mat-icon {
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+
+/* Contenedor Principal */
+.checkout-container {
+  max-width: 1000px;
+  margin: 20 auto;
+  padding: 30px;
+}
+
+/* Estilos para los encabezados */
+.checkout-heading {
+  color: #142b3b; 
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+/* Estilos para los contenedores */
+.containeruno {
+  padding: 16px;
+  border: 1px solid #c8e5e3; 
+  margin-right: 0; 
+  margin-left: 200px; 
+}
+
+.containerdos {
+  padding: 16px;
+  border: 1px solid #c8e5e3; 
+  margin-left: 10px; 
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;  
+  margin-top: 30px; 
+}
+
+.container-wrapper > .containerdos {
+  margin-left: 20px; 
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col {
+  flex: 1;
+  margin-right: 10px; 
+}
+
+.full-width {
+  width: 100%;
+}
+
+.extension-select {
+  width: 250px; 
+}
+
+.mt-3 {
+  margin-top: 1.5rem; 
+  margin-bottom: 1.0rem; 
+  background-color: #f0ddaa; 
+  border: 0.5px solid #ffffff; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.text-danger {
+  color: #e42d40;
+  font-size: 0.875rem;
+}
+
+.alert {
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-radio-button {
+  margin-right: 1rem;
+}
+
+.mat-radio-group {
+  margin-bottom: 1rem;
+}
+
+.product-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px; 
+}
+
+.product-detail-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.tarjeta-compra-title {
+  color: #142b3b; 
+  font-size: 1.5rem; 
+  margin-bottom: 16px; 
+}
+
+.tarjeta-compra-list {
+  padding-left: 0; 
+}
+
+.tarjeta-compra-item {
+  border-bottom: 1px solid #ffffff; 
+}
+
+.tarjeta-compra-item:last-child {
+  border-bottom: none; 
+}
+
+.tarjeta-compra-total {
+  font-weight: bold; 
+  font-size: 1rem; 
+}
+
+.tarjetaenvio {
+  font-weight: bold;
+  font-size: 1rem; 
+  text-align: right;
+}
+
+.tarjetatotal > .tarjetacosto {
+  font-size: 1rem; 
+  text-align: right;
+}
+
+
+
+.containeruno .row {
+  margin-bottom: 20px;
+}
+
+.containeruno .col {
+  margin-right: 15px; 
+}
+
+.containeruno .col:last-child {
+  margin-right: 0; 
+}
+
+.extension-select {
+  margin-right: 15px; 
+}
+
+.product-card, .purchase-card {
+  margin: 0 auto;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px; 
+}
+
+.product-card .product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.purchase-card .purchase-list {
+  padding-left: 0;
+}
+
+.purchase-card .purchase-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.purchase-card .purchase-item:last-child {
+  border-bottom: none;
+}
+
+.purchase-card .total-price {
+  font-weight: bold;
+}
+
+.purchase-card .subtotal,
+.purchase-card .shipping-cost,
+.purchase-card .total {
+  text-align: right;
+}
+
+.add-product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.mat-fab {
+  background-color: #1792a4; 
+  color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease; 
+  width: 48px; 
+  height: 48px; 
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-fab:hover {
+  background-color: #45a049; 
+}
+
+.add-product-text {
+  margin-left: 10px;
+  font-weight: bold; 
+}
