@@ -1,23 +1,24 @@
 <mat-toolbar class="custom-toolbar">
-    <span class="title">Electronics Store</span>
+    <span class="title" routerLink="/products">Electronics Store</span>
     <span class="spacer"></span>
     <nav>
-        <button mat-button #productsMenuTrigger="matMenuTrigger" (mouseover)="openMenu(productsMenuTrigger)" (mouseleave)="closeMenu(productsMenuTrigger)" [matMenuTriggerFor]="productsMenu" class="white-text">Productos</button>
+        <button mat-button [matMenuTriggerFor]="productsMenu" routerLinkActive="active-link" class="white-text">Productos</button>
         <button mat-button routerLink="/clientes" routerLinkActive="active-link" class="white-text">Clientes</button>
         <button mat-button routerLink="/proveedores" routerLinkActive="active-link" class="white-text">Proveedores</button>
         <button mat-button routerLink="/proceso-compra" routerLinkActive="active-link" class="white-text">Proceso de Compra</button>
+        <button mat-button routerLink="/adminProduct" routerLinkActive="active-link" class="white-text">Administración de Productos</button>
     </nav>
     <span class="spacer"></span>
     <button mat-icon-button>
-      <mat-icon class="white-text">search</mat-icon>
-  </button>
+    <mat-icon class="white-text">search</mat-icon>
+</button>
     <button mat-icon-button>
-      <mat-icon class="white-text">shopping_cart</mat-icon>
-      <span class="badge" matBadge="{{cartItemCount}}" matBadgeColor="warn"></span>
-  </button>
+    <mat-icon class="white-text">shopping_cart</mat-icon>
+    <span class="badge" matBadge="{{cartItemCount}}" matBadgeColor="warn"></span>
+</button>
     <button mat-icon-button (click)="logout()">
-      <mat-icon class="white-text">exit_to_app</mat-icon>
-  </button>
+    <mat-icon class="white-text">exit_to_app</mat-icon>
+</button>
 </mat-toolbar>
 
 <mat-menu #productsMenu="matMenu">

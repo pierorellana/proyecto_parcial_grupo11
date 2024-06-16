@@ -13,6 +13,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { ProductsModule } from './pages/products/module/product.module';
+import { AdminProductComponent } from './pages/admin-product/admin-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { ProductsModule } from './pages/products/module/product.module';
     UsuariosComponent,
     CabeceraComponent,
     FooterComponent,
+    AdminProductComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     ProductsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule, 
     MatMenuModule,

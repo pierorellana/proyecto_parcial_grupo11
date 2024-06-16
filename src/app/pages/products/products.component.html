@@ -1,11 +1,9 @@
 <div class="productos-container">
     <div class="left-section">
         <h1 class="black-text-title">MacBook Pro 16" - The Ultimate Pro Notebook</h1>
-        <p class="black-text">Sumérgete en la experiencia definitiva con el MacBook Pro 16". Diseñado para aquellos que
-            buscan lo mejor en potencia, rendimiento y portabilidad, este increíble portátil ofrece una combinación
-            perfecta de estilo y funcionalidad. Con su impresionante pantalla de 16 pulgadas, disfrutarás de imágenes
-            nítidas y colores vibrantes en cada detalle. Su potente procesador y gráficos de última generación te
-            permiten realizar cualquier tarea con facilidad, desde la edición de video hasta la programación intensiva.
+        <p class="black-text">Sumérgete en la experiencia definitiva con el MacBook Pro 16". Diseñado para aquellos que buscan lo mejor en potencia, rendimiento y portabilidad, este increíble portátil ofrece una combinación perfecta de estilo y funcionalidad. Con su impresionante
+            pantalla de 16 pulgadas, disfrutarás de imágenes nítidas y colores vibrantes en cada detalle. Su potente procesador y gráficos de última generación te permiten realizar cualquier tarea con facilidad, desde la edición de video hasta la programación
+            intensiva.
         </p>
         <button mat-raised-button (click)="addToCart()">Agregar al carrito</button>
         <button mat-button class="black-text">Leer más</button>
@@ -25,7 +23,7 @@
                 <p>{{product.description}}</p>
                 <div class="price-button-container">
                     <p><strong>{{product.price | currency}}</strong></p>
-                    <button mat-raised-button color="primary" (click)="addToCart()">Agregar al carrito</button>
+                    <button mat-raised-button (click)="addToCart()">Agregar al carrito</button>
                 </div>
             </mat-card-content>
         </mat-card>

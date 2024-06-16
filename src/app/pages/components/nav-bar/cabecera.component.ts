@@ -14,21 +14,9 @@ export class CabeceraComponent implements OnInit {
 
   constructor(private router: Router, private cartService: CartService) { }
 
-  @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
-
-  openMenu(menu: MatMenuTrigger) {
-    menu.openMenu();
-  }
-
-  closeMenu(menu: MatMenuTrigger) {
-    menu.closeMenu();
-  }
-
   logout() {
     this.router.navigate(['/login']);
   }
-
-  //Comentario de prueba
 
   ngOnInit(): void {
     this.cartService.cartItemCount$.subscribe(count => {

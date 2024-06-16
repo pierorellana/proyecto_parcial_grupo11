@@ -6,6 +6,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ComputadorasComponent } from './pages/products/components/computadoras/computadoras.component';
 import { CelularesComponent } from './pages/products/components/celulares/celulares.component';
 import { AccesoriosComponent } from './pages/products/components/accesorios/accesorios.component';
+import { AdminProductComponent } from './pages/admin-product/admin-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'products/computer', component: ComputadorasComponent },
   { path: 'products/phones', component: CelularesComponent },
   { path: 'products/accesories', component: AccesoriosComponent },
+  { path: 'adminProduct', component: AdminProductComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

@@ -3,23 +3,22 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-  }
-  
-  .footer-text {
+}
+
+.footer-text {
     color: white;
     font-size: 14px;
-  }
-  
-  nav {
+}
+
+nav {
     display: flex;
     gap: 15px;
-  }
-  
-  .spacer {
+}
+
+.spacer {
     flex: 1 1 auto;
-  }
-  
-  .white-text {
+}
+
+.white-text {
     color: white;
-  }
-  
+}

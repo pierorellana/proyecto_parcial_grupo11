@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="form-container">
+        <h2>Agrega un Nuevo Producto</h2>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-field">
+                <span>Nombre</span>
+                <input formControlName="name">
+            </div>
+            <div class="form-field">
+                <span>Descripción</span>
+                <textarea formControlName="description"></textarea>
+            </div>
+            <div class="form-field">
+                <span>Precio</span>
+                <input formControlName="price" type="number">
+            </div>
+            <div class="form-field" cdkDropList (cdkDropListDropped)="onDrop($event)">
+                <span>Imagen</span>
+                <div class="upload-box" (click)="fileInput.click()">
+                    <ng-container *ngIf="selectedImage; else placeholder">
+                        <img [src]="selectedImage" alt="Imagen seleccionada" class="preview-image">
+                    </ng-container>
+                    <ng-template #placeholder>
+                        <p>Arrastra una imagen o haz clic para seleccionar una</p>
+                    </ng-template>
+                    <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" type="submit">Agregar Producto</button>
+        </form>
+    </div>
+    <div class="products-container">
+        <h2>Productos</h2>
+        <mat-card *ngFor="let product of products" class="product-card">
+            <div class="product-details">
+                <img [src]="product.image" alt="{{product.name}}" class="product-image">
+                <div class="product-info">
+                    <h3>{{product.name}}</h3>
+                    <p>${{product.price}}</p>
+                    <p>{{product.description}}</p>
+                    <div class="product-actions">
+                        <button mat-button (click)="editProduct(product)">Editar</button>
+                        <button mat-button color="warn" (click)="deleteProduct(product)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
