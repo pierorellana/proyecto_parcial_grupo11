@@ -1,0 +1,27 @@
+<mat-toolbar class="custom-toolbar">
+    <span class="title">Electronics Store</span>
+    <span class="spacer"></span>
+    <nav>
+        <button mat-button #productsMenuTrigger="matMenuTrigger" (mouseover)="openMenu(productsMenuTrigger)" (mouseleave)="closeMenu(productsMenuTrigger)" [matMenuTriggerFor]="productsMenu" class="white-text">Productos</button>
+        <button mat-button routerLink="/clientes" routerLinkActive="active-link" class="white-text">Clientes</button>
+        <button mat-button routerLink="/proveedores" routerLinkActive="active-link" class="white-text">Proveedores</button>
+        <button mat-button routerLink="/proceso-compra" routerLinkActive="active-link" class="white-text">Proceso de Compra</button>
+    </nav>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon class="white-text">search</mat-icon>
+  </button>
+    <button mat-icon-button>
+      <mat-icon class="white-text">shopping_cart</mat-icon>
+      <span class="badge" matBadge="{{cartItemCount}}" matBadgeColor="warn"></span>
+  </button>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon class="white-text">exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #productsMenu="matMenu">
+    <button mat-menu-item routerLink="/products/computer">Computadoras</button>
+    <button mat-menu-item routerLink="/products/phones">Teléfonos</button>
+    <button mat-menu-item routerLink="/products/accesories">Accesorios</button>
+</mat-menu>

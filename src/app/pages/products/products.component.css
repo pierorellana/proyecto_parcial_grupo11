@@ -1,0 +1,96 @@
+.productos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F1F1F1;
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 95vh;
+}
+
+.left-section {
+  flex: 1;
+  padding-right: 20px;
+  color: black;
+}
+
+.right-section {
+  flex: 1;
+}
+
+.black-text-title {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.black-text {
+  color: black;
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.mat-raised-button {
+  background-color: #0f0e17;
+  color: white;
+}
+
+.producto-image {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.popular-products-container {
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.popular-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 40px;
+}
+
+.product-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; 
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.mat-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.price-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.price-button-container p {
+  margin: 0;
+}
+
+.product-image {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}

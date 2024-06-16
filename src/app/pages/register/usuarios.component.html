@@ -1,0 +1,44 @@
+<form class="example-form">
+    <div class="separar" >
+    <label class="titulo">Registrate</label>
+   </div>
+   <br>
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese su nombre">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput placeholder="Ingrese su apellido">
+          </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Ingrese su e-mail">
+      </mat-form-field>
+      <mat-form-field appearance="outline"> 
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+   <div class="rol">
+      <label>ROL:</label>
+     <br>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Administrativo</mat-radio-button>
+        <br>
+        <br>
+        <mat-radio-button value="2">General</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+      <button mat-flat-button color="primary" routerLink="/login">Aceptar</button>
+      <br>
+      
+  </form>

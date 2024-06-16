@@ -1,0 +1,25 @@
+.custom-footer {
+    background-color: #0f0e17;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  .footer-text {
+    color: white;
+    font-size: 14px;
+  }
+  
+  nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .white-text {
+    color: white;
+  }
+  

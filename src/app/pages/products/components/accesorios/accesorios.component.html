@@ -1,0 +1,16 @@
+<div class="accesorio-products-container">
+    <h2 class="section-title">Accesorios</h2>
+    <div class="accesorio-products-grid">
+        <mat-card class="product-card" *ngFor="let product of accesoriosProducts">
+            <img mat-card-image src="{{product.image}}" alt="Imagen del producto" class="product-image">
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-content>
+                <p>{{product.description}}</p>
+                <div class="price-button-container">
+                    <p><strong>{{product.price | currency}}</strong></p>
+                    <button mat-raised-button color="primary" (click)="addToCart()">Agregar al carrito</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

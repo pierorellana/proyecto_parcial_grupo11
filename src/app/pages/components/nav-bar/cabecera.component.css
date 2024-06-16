@@ -1,0 +1,51 @@
+.custom-toolbar {
+  background-color: #0f0e17;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon-button {
+  position: relative;
+}
+
+.white-text {
+  color: white;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.active-link {
+  border-bottom: 1px solid #ffffff;
+}
+
+.mat-menu-content {
+  background-color: #0f0e17;
+  color: white;
+}
+
+.mat-menu-item {
+  color: #0f0e17;
+}
+
+.mat-menu-item:hove {
+  background-color: #3d3d4e;
+}
