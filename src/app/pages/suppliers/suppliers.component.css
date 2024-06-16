@@ -1,0 +1,66 @@
+.supplier-management {
+    padding: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.title {
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}
+
+.add-button {
+    background-color: #0f0e17;
+    color: white;
+}
+
+.search-field {
+    width: 30%;
+    margin-bottom: 16px;
+}
+
+.mat-form-field-appearance-standard .mat-form-field-wrapper {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0 8px;
+}
+
+.product-chip {
+    background-color: #0f0e17;
+    color: white;
+    border-radius: 8px;
+    display: inline-block;
+    margin-right: 4px;
+    padding: 2px 8px;
+}
+
+.mat-elevation-z8 {
+    margin-top: 16px;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mat-raised-button {
+    background-color: #0f0e17;
+    color: white;
+}
+
+table {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+.mat-header-cell .title {
+    font-weight: bold;
+    color: black;
+}

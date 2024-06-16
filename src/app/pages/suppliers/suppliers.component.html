@@ -1,0 +1,56 @@
+<mat-card>
+    <div class="supplier-management">
+        <div class="header">
+            <h1 class="title">Administración de Proveedores</h1>
+            <button mat-raised-button (click)="openDialog()" class="add-button">Agregar Proveedor</button>
+        </div>
+        <mat-form-field appearance="standard" class="search-field">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar proveedores..." />
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="title">Nombre</th>
+                <td mat-cell *matCellDef="let supplier">{{ supplier.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="contact">
+                <th mat-header-cell *matHeaderCellDef class="title">Contacto</th>
+                <td mat-cell *matCellDef="let supplier">{{ supplier.contact }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="products">
+                <th mat-header-cell *matHeaderCellDef class="title">Productos</th>
+                <td mat-cell *matCellDef="let supplier">
+                    <span *ngFor="let product of supplier.products" class="product-chip">{{ product }}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="deliveryTime">
+                <th mat-header-cell *matHeaderCellDef class="title">Tiempo de Entrega</th>
+                <td mat-cell *matCellDef="let supplier">{{ supplier.deliveryTime }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quality">
+                <th mat-header-cell *matHeaderCellDef class="title">Calidad</th>
+                <td mat-cell *matCellDef="let supplier">
+                    <mat-icon>star</mat-icon> {{ supplier.quality }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="title">Acciones</th>
+                <td mat-cell *matCellDef="let supplier">
+                    <button mat-icon-button (click)="editSupplier(supplier)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteSupplier(supplier)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </div>
+</mat-card>

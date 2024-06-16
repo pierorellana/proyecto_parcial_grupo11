@@ -21,7 +21,9 @@ import { DetalleOrdenComponent } from './pages/detalle-orden/detalle-orden.compo
 import { SolicitudesService } from './pages/solicitud/service/solicitudes.service';
 // import { ProductoService } from './pages/productos/service/producto.service';
 import { AdminProductComponent } from './pages/admin-product/admin-product.component';
+import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { CabeceraComponent } from './pages/components/nav-bar/cabecera.component';
+import { SupplierFormComponent } from './pages/supplier-form/supplier-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CabeceraComponent } from './pages/components/nav-bar/cabecera.component
     DetalleOrdenComponent,
     AdminProductComponent,
     CabeceraComponent,
+    SuppliersComponent,
+    SupplierFormComponent
   ],
   imports: [
     BrowserModule,

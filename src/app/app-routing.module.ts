@@ -11,6 +11,7 @@ import { ClientComponent } from './pages/client/client.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DetalleOrdenComponent } from './pages/detalle-orden/detalle-orden.component';
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
+import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'detalle-orden', component: DetalleOrdenComponent },
   { path: 'solicitud/:valor', component: SolicitudComponent },
   { path: 'ordenes', component: OrdenesComponent },
+  { path: 'proveedor', component: SuppliersComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
