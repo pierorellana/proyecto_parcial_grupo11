@@ -1,75 +1,7 @@
-<!-- <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Registro de clientes</span>
-  <span class="example-spacer"></span>
-  <button mat-raised-button (click)="openAddEditEmpForm()">
-    Agregar cliente
-  </button>
-</mat-toolbar>
-
-<div class="main-body">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="apellido">
-      <th mat-header-cell *matHeaderCellDef> Apellido </th>
-      <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef> Fecha </th>
-      <td mat-cell *matCellDef="let element"> {{element.fecha | date}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="genero">
-      <th mat-header-cell *matHeaderCellDef> Genero </th>
-      <td mat-cell *matCellDef="let element"> {{element.genero}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="pago">
-      <th mat-header-cell *matHeaderCellDef> Pago </th>
-      <td mat-cell *matCellDef="let element"> {{element.pago}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="domicilio">
-      <th mat-header-cell *matHeaderCellDef> Domicilio </th>
-      <td mat-cell *matCellDef="let element"> {{element.domicilio}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="items">
-      <th mat-header-cell *matHeaderCellDef> Items </th>
-      <td mat-cell *matCellDef="let element"> {{element.items}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="total">
-      <th mat-header-cell *matHeaderCellDef> Total </th>
-      <td mat-cell *matCellDef="let element"> {{element.total}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
-     
-  </table>
-  
-</div> -->
-
-
-<!-- <ng-container *ngIf="!isLoginPage() && !isRegisterPage()">
-  <app-cabecera></app-cabecera>
+<ng-container *ngIf="!isLoginPage() && !isRegisterPage()">
+    <app-cabecera></app-cabecera>
 </ng-container>
 <router-outlet></router-outlet>
 <ng-container *ngIf="!isLoginPage() && !isRegisterPage()">
-  <app-footer></app-footer>
-</ng-container> -->
+    <app-footer></app-footer>
+</ng-container>

@@ -1,37 +1,41 @@
-
 .example-form {
-    border: 2px solid #3f51b5;
+    border: 2px solid #0f0e17;
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: white;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    margin-top: 80px;
-    margin-left: 20%;
-    margin-right: 25%;
-
+    margin: 80px auto;
+    max-width: 400px;
 }
-label{
 
-    margin-left: 35%;
+label {
+    text-align: center;
     font-size: 28px;
-    margin-bottom: 5%;
-   
+    margin-bottom: 10px;
 }
-.separar{
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-.example-form mat-form-field {
 
-    margin-left: 22%;
-    width: 50%;
+.separar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.example-form mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .example-form button {
-    margin-left: 34%;
-    width: 25%;
-   
+    width: 48%;
+}
+
+.mat-raised-button {
+    background-color: #0f0e17;
+    color: white;
 }
