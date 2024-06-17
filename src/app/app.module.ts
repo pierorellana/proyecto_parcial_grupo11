@@ -24,6 +24,8 @@ import { AdminProductComponent } from './pages/admin-product/admin-product.compo
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { CabeceraComponent } from './pages/components/nav-bar/cabecera.component';
 import { SupplierFormComponent } from './pages/supplier-form/supplier-form.component';
+import { InventoryComponent } from './pages/inventory/inventory.component';
+import { EditInventoryComponent } from './pages/edit-inventory/edit-inventory.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { SupplierFormComponent } from './pages/supplier-form/supplier-form.compo
     AdminProductComponent,
     CabeceraComponent,
     SuppliersComponent,
-    SupplierFormComponent
+    SupplierFormComponent,
+    InventoryComponent,
+    EditInventoryComponent
   ],
   imports: [
     BrowserModule,

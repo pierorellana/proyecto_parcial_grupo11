@@ -1,0 +1,38 @@
+<div class="inventory-management">
+    <h1 class="title">Administración de Inventarios</h1>
+    <mat-form-field appearance="standard" class="search-field">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por proveedor o productos...">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="filteredDataSource" class="mat-elevation-z8 full-width">
+        <ng-container matColumnDef="supplier">
+            <th mat-header-cell *matHeaderCellDef class="title"> Proveedor </th>
+            <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef class="title"> Producto </th>
+            <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="inventory">
+            <th mat-header-cell *matHeaderCellDef class="title"> Inventario </th>
+            <td mat-cell *matCellDef="let element"> {{element.inventory}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef class="title"> Precio </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="title"> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button (click)="editItem(element)">Edit</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

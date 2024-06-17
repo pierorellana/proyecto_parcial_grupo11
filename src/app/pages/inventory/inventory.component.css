@@ -1,0 +1,29 @@
+.inventory-management {
+    padding: 20px;
+}
+
+mat-form-field.full-width {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 70px;
+}
+
+.title {
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}
+
+.mat-raised-button {
+    background-color: #0f0e17;
+    color: white;
+}
+
+.search-field {
+    width: 30%;
+    margin-bottom: 16px;
+}

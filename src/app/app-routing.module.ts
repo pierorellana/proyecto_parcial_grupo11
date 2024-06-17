@@ -12,6 +12,7 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DetalleOrdenComponent } from './pages/detalle-orden/detalle-orden.component';
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
+import { InventoryComponent } from './pages/inventory/inventory.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'solicitud/:valor', component: SolicitudComponent },
   { path: 'ordenes', component: OrdenesComponent },
   { path: 'proveedor', component: SuppliersComponent },
+  { path: 'inventario', component: InventoryComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
