@@ -46,7 +46,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDatepickerModule,
     MatGridListModule,
     MatExpansionModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
 })
 export class MaterialModule {}

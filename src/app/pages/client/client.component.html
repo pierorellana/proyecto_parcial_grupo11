@@ -1,6 +1,8 @@
 <div class="main-body">
     <div class="table-header">
         <button mat-raised-button color="primary" (click)="openAddEditEmpForm()">Agregar Cliente</button>
+        <button mat-raised-button color="primary" routerLink="/soporte" style="margin-left: 10px;">Soporte</button>
+
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="nombre">

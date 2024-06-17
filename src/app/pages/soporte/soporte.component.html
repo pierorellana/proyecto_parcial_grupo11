@@ -1,0 +1,54 @@
+<form [formGroup]="profileForm" class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Enviar Comentario</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                        <input formControlName="nombres" matInput placeholder="Nombres">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                        <input formControlName="apellidos" matInput placeholder="Apellidos">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <textarea formControlName="Direccion" matInput placeholder="Direccion"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 top-padding">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Fecha</mat-label>
+                        <input formControlName="fecha" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-radio-group formControlName="genero" class="margin-left">
+                        <mat-radio-button value="male"> Masculino </mat-radio-button>
+                        <mat-radio-button value="female"> Femenino </mat-radio-button>
+                        <mat-radio-button value="female"> Otros </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <br>
+                <div class="col-sm-6">
+                    <mat-form-field class="full-width">
+                        <textarea formControlName="comentario" matInput placeholder="Comentario"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="centered-actions">
+            <button (click)="saveForm()" mat-raised-button>Enviar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

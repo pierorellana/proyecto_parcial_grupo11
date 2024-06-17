@@ -13,6 +13,7 @@ import { DetalleOrdenComponent } from './pages/detalle-orden/detalle-orden.compo
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { SuppliersComponent } from './pages/suppliers/suppliers.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
+import { SoporteComponent } from './pages/soporte/soporte.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'ordenes', component: OrdenesComponent },
   { path: 'proveedor', component: SuppliersComponent },
   { path: 'inventario', component: InventoryComponent },
+  { path: 'soporte', component: SoporteComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

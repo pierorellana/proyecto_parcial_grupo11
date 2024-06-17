@@ -1,0 +1,30 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.top-padding {
+    padding-top: 3px;
+}
+
+.margin-left mat-radio-button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.form-container {
+    margin: 50px;
+    padding-bottom: 40px;
+}
+
+.centered-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-raised-button {
+    background-color: #0f0e17;
+    color: white;
+}
