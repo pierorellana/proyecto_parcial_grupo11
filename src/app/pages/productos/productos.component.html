@@ -1,35 +1,59 @@
 <div class="container">
-  <!-- Productos Destacados -->
-  <h2 class="my-4">Productos Destacados</h2>
-  <div class="row">
-    <div class="col-md-4 col-sm-6 mb-4" *ngFor="let producto of productosDestacados">
-      <mat-card class="h-100">
-        <img mat-card-image [src]="producto.imagen" alt="Imagen del producto">
-        <mat-card-content>
-          <h5 mat-card-title>{{ producto.nombre }}</h5>
-          <p>{{ producto.descripcion }}</p>
-          <p>Precio: {{ producto.precio | currency }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/solicitud">Hacer pedido</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
+  
 
-  <!-- Categorías -->
-  <h2 class="my-4">Categorías</h2>
-  <div class="row">
-    <div class="col-md-3 col-sm-6 mb-4" *ngFor="let categoria of categorias">
-      <mat-card class="h-100">
+  <div class="products-container">
+    <h2 class="section-title">Teléfonos</h2>
+    <div class="products-grid">
+      <mat-card class="product-card" *ngFor="let producto of productos">
+        <img mat-card-image *ngIf="producto.imagen" [src]="'data:image/jpeg;base64,' + producto.imagen" alt="Imagen del producto" class="product-image">
+        <mat-card-title>{{ producto.nombre }}</mat-card-title>
         <mat-card-content>
-          <h5 mat-card-title>{{ categoria }}</h5>
-          <p>Explora nuestra selección de {{ categoria.toLowerCase() }}</p>
+          <p>{{ producto.descripcion }}</p>
+          <div class="price-button-container">
+            <p><strong>{{ producto.precio | currency }}</strong></p>
+            <button mat-raised-button color="primary" (click)="generarSolicitud(producto)">Generar Solicitud</button>
+          </div>
         </mat-card-content>
-        <mat-card-actions>
-          <a mat-raised-button color="primary" [routerLink]="['/categoria', categoria]">Ver más</a>
-        </mat-card-actions>
       </mat-card>
     </div>
   </div>
+  
+  
+  <hr />
+
+  <!-- Formulario para crear un nuevo producto -->
+  <h2>Crear Nuevo Producto</h2>
+  <form [formGroup]="productoForm" (ngSubmit)="crearProducto()">
+    <div class="form-group">
+      <label for="Nombre">Nombre</label>
+      <input id="Nombre" class="form-control" formControlName="nombre" />
+    </div>
+
+    <div class="form-group">
+      <label for="Descripcion">Descripción</label>
+      <textarea id="Descripcion" class="form-control" formControlName="descripcion"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="Precio">Precio</label>
+      <input id="Precio" type="number" class="form-control" formControlName="precio" />
+    </div>
+
+    <div class="form-group">
+      <label for="Imagen">Imagen</label>
+      <input id="Imagen" type="file" class="form-control" (change)="onFileChange($event)" />
+    </div>
+
+    <div class="form-group">
+      <label for="Stock">Stock</label>
+      <input id="Stock" type="number" class="form-control" formControlName="stock" />
+    </div>
+
+    <div class="form-group">
+      <label for="CategoriaId">Categoría ID</label>
+      <input id="categoriaId" type="number" class="form-control" formControlName="categoriaId" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Crear Producto</button>
+  </form>
 </div>

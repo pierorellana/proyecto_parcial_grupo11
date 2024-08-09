@@ -1,6 +1,6 @@
 /* Estilos personalizados para la barra de herramientas */
 .custom-toolbar {
-    background-color: #1792a4; 
+    background-color: #050505; 
     color: #ffffff; 
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@
   }
   
   .mat-toolbar button.mat-button:hover {
-    background-color: #44b4c4;
+    background-color: #172425;
   }
   
   /* Estilo para el span que ocupa el espacio entre los elementos */

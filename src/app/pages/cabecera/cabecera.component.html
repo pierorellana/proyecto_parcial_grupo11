@@ -1,9 +1,36 @@
-<mat-toolbar color="primary" class="custom-toolbar">
-  <div class="logo-container">
-    <img src="assets/images/logo.png" alt="Logo" class="toolbar-logo">
-    <span class="toolbar-title">DigitalMarket</span>
-  </div>
+
+<mat-toolbar class="custom-toolbar">
+  <span class="title" routerLink="/products">Electronics Store</span>
   <span class="spacer"></span>
-  <button mat-button routerLink="/">Inicio</button>
-  <button mat-button routerLink="/ordenes">Solicitudes</button>
-</mat-toolbar>
+  <nav>
+    <button mat-button routerLink="/">Producto</button>
+   
+      <button mat-button routerLink="/client" routerLinkActive="active-link" class="white-text">
+    Clientes
+  </button>
+  
+      <button mat-button  routerLinkActive="active-link" class="white-text">
+    Proveedores
+  </button>
+      <button mat-button routerLink="/ordenes" routerLinkActive="active-link" class="white-text">
+    Proceso de Compra
+  </button>
+      <button mat-button routerLink="/adminProduct" routerLinkActive="active-link" class="white-text">
+    Administración de Productos
+  </button>
+  </nav>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+  <mat-icon class="white-text">search</mat-icon>
+</button>
+  <button mat-icon-button>
+  <mat-icon class="white-text">shopping_cart</mat-icon>
+  <span
+    class="badge"
+    
+    matBadgeColor="warn"
+  ></span>
+</button>
+ 
+  <mat-icon class="white-text">exit_to_app</mat-icon>
+

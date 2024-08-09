@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitudesService } from '../solicitud/service/solicitudes.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductosService } from '../productos/service/producto.service';
 
 @Component({
   selector: 'app-ordenes',
@@ -10,64 +11,95 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class OrdenesComponent implements OnInit {
   ordenes: any[] = [];
-  filterValue: string = '';
   ordenesFiltradas: any[] = [];
-  displayedColumns: string[] = ['id', 'cliente', 'telefonoCliente',  'precioTotal', 'detalles', 'acciones'];
+  displayedColumns: string[] = ['id', 'cliente', 'telefonoCliente', 'productos', 'precioTotal', 'detalles', 'acciones'];
+  filterValue: string = '';
 
-  constructor(private solicitudesService: SolicitudesService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(
+    private solicitudesService: SolicitudesService, 
+    private productosService: ProductosService,
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.solicitudesService.ordenes$.subscribe(ordenes => {
-      console.log('Datos de órdenes recibidos:', ordenes); 
-      this.ordenes = ordenes.map(orden => ({
-        ...orden,
-        precioTotal: this.calcularPrecioTotal(orden.productos)
-      }));
-      this.ordenesFiltradas = [...this.ordenes];
+    this.solicitudesService.ObtenerTodasLasSolicitudes().subscribe((data: any[]) => {
+      this.ordenes = data;
+      this.ordenesFiltradas = data;
+      console.log('Datos de órdenes recibidos:', this.ordenes); 
     });
   }
 
-  calcularPrecioTotal(productos: any[]): number {
-    return productos.reduce((total, producto) => total + (producto.cantidad * producto.precio), 0);
-  }
-
-  aplicarFiltro(): void {
-    if (!this.filterValue.trim()) {
-      this.ordenesFiltradas = [...this.ordenes];
-      return;
-    }
-    const lowercaseValue = this.filterValue.toLowerCase().trim();
-    this.ordenesFiltradas = this.ordenes.filter(orden => {
-      return  orden.cliente.toLowerCase().includes(lowercaseValue);
-    });
+  aplicarFiltro() {
+    // Verifica si el valor del filtro no está vacío
+    if (this.filterValue.trim()) {
+      // Elimina los espacios y convierte el valor a minúsculas para la comparación
+      const filter = this.filterValue.trim().toLowerCase();
   
-    console.log('Datos filtrados:', this.ordenesFiltradas);
-  }
+      // Busca por ID (si es un número)
+      if (!isNaN(Number(filter))) {
+        this.solicitudesService.ObtenerSolicitudPorId(Number(filter)).subscribe(
+          (data) => {
+            this.ordenesFiltradas = [data];
+            console.log('Resultados de la búsqueda por ID:', data);
+          },
+          (error) => {
+            console.error('Error al buscar por ID:', error);
+            this.snackBar.open('No se encontraron resultados para el ID proporcionado.', 'Cerrar', { duration: 3000 });
+          }
+        );
+        return;  // Si encuentra por ID, no busca por nombre
+      }
+      // Busca por cliente
+    this.solicitudesService.ConsultarPorCliente(this.filterValue.trim()).subscribe(
+      (data) => {
+        this.ordenesFiltradas = data;
+        console.log('Resultados de la búsqueda por cliente:', data);
+      },
+      (error) => {
+        console.error('Error al buscar por cliente:', error);
+        this.snackBar.open('No se encontraron resultados para el cliente.', 'Cerrar', { duration: 3000 });
+      }
+    );
   
-
-  editarOrden(orden: any) {
-    if (orden && orden.id !== undefined) {
-      this.router.navigate(['/editar-orden', orden.id]);
-    } else {
-      console.error('La orden seleccionada es inválida.');
-    }
-  }
-
-  eliminarOrden(orden: any) {
-    if (confirm(`¿Estás seguro de que deseas eliminar la orden de ${orden.cliente}?`)) {
-      this.solicitudesService.eliminarOrden(orden.id).subscribe(() => {
-        const index = this.ordenes.findIndex(o => o.id === orden.id);
-        if (index > -1) {
-          this.ordenes.splice(index, 1);
-          this.aplicarFiltro();
+      // Busca por nombre de producto usando el ProductosService
+      this.productosService.ConsultarPorNombre(filter).subscribe(
+        (productos) => {
+          // Filtra las órdenes en base a los productos encontrados
+          this.ordenesFiltradas = this.ordenes.filter(orden =>
+            productos.some(producto => producto.nombre.toLowerCase() === orden.producto.nombre.toLowerCase())
+          );
+          console.log('Resultados de la búsqueda por nombre de producto:', this.ordenesFiltradas);
+        },
+        (error) => {
+          console.error('Error al buscar por nombre de producto:', error);
+          this.snackBar.open('No se encontraron resultados para el producto.', 'Cerrar', { duration: 3000 });
         }
-        this.snackBar.open('Orden eliminada con éxito', 'Cerrar', { duration: 3000 });
+      );
+      return;  // Si encuentra por nombre de producto, no busca por cliente
+    }
+  
+    
+  }
+  
+  limpiarFiltro() {
+    this.filterValue = '';
+    this.ordenesFiltradas = this.ordenes; // Muestra todas las órdenes
+  }
+  editarSolicitud(id: number) {
+    this.router.navigate(['editar', id]);
+  }
+  
+
+  
+  borrarOrden(id: number) {
+    if(confirm('¿Está seguro de que desea eliminar esta orden?')) {
+      this.solicitudesService.EliminarSolicitud(id).subscribe(() => {
+        this.snackBar.open('Orden eliminada con éxito', 'Cerrar', {
+          duration: 3000,
+        });
+        this.ngOnInit();
       });
     }
-  }
-  
-
-  agregarOrden() {
-    this.router.navigate(['/agregar-orden']);
   }
 }

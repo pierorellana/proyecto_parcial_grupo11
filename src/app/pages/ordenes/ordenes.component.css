@@ -19,13 +19,13 @@
 
 /* Estilo para los botones */
 .mat-raised-button {
-  background-color: #5ebdb2; 
+  background-color: #363a39; 
   color: white;
   margin-top: 20px;
 }
 
 .mat-raised-button:hover {
-  background-color: #1f8696; 
+  background-color: #2f3e41; 
 }
 
 /* Estilo para el botón de búsqueda */
@@ -54,7 +54,7 @@ mat-icon {
 
 .ordenes-container h2 {
   margin-bottom: 20px;
-  color: #142b3b; 
+  color: #686868; 
 }
 
 /* Estilo para el título de la lista de órdenes */
@@ -62,7 +62,7 @@ mat-icon {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #142b3b;
+  color: #1f262b;
 }
 
 /* Estilo para los campos de búsqueda */
@@ -108,7 +108,7 @@ mat-icon {
   margin-top: 30px;
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #1792a4; 
+  background-color: #000000; 
   color: #ffffff; 
   text-decoration: none; 
   transition: background-color 0.3s, color 0.3s; 
@@ -121,3 +121,75 @@ mat-icon {
   margin-left: 5px; 
 }
 
+/* Estilo para el contenedor de búsqueda */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espacio entre los elementos */
+  padding: 16px; /* Espacio interno alrededor del contenedor */
+  background-color: #ffffff; /* Fondo ligero para el contenedor */
+  border-radius: 4px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra sutil para el contenedor */
+}
+
+/* Estilo para los botones de iconos */
+.mat-icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Elimina el color de fondo morado en el botón de ícono al hacer clic */
+.mat-icon-button:focus,
+.mat-icon-button:active {
+  background-color: transparent; /* Fondo transparente */
+  outline: none; /* Sin borde de enfoque */
+}
+
+/* Estilo para los botones */
+.mat-raised-button {
+  background-color: #363a39; 
+  color: white;
+  margin-top: 20px;
+  /* Asegura que el color de fondo no cambie al hacer clic */
+  box-shadow: none;
+}
+
+/* Evita el cambio de color en el botón al hacer clic o enfocar */
+.mat-raised-button:focus,
+.mat-raised-button:active {
+  background-color: #363a39; /* Mantiene el color de fondo original */
+  box-shadow: none; /* Elimina la sombra del botón al hacer clic */
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Estilo para los íconos */
+mat-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Otros estilos existentes */
+.search-field {
+  flex: 1; /* Ocupa el espacio disponible */
+}
+
+mat-form-field {
+  width: 100%; /* Asegura que el campo de búsqueda ocupe el ancho completo del contenedor */
+}
+
+button.mat-raised-button {
+  margin-left: 8px; /* Espacio entre el campo de búsqueda y el botón de búsqueda */
+}
+
+button.mat-icon-button {
+  margin-left: 8px; /* Espacio entre el campo de búsqueda y el ícono de limpieza */
+}

@@ -4,6 +4,7 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { DetalleOrdenComponent } from './pages/detalle-orden/detalle-orden.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { EditarComponent } from './pages/editar/editar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/productos', pathMatch: 'full' },
@@ -12,8 +13,10 @@ const routes: Routes = [
   { path: 'productos/:id', component: ProductosComponent },
   { path: 'orden/:id', component: DetalleOrdenComponent },
   { path: 'detalle-orden', component: DetalleOrdenComponent },
+  { path: 'detalle-orden/:id', component: DetalleOrdenComponent },
   { path: 'solicitud/:valor', component: SolicitudComponent },
   { path: 'ordenes', component: OrdenesComponent },
+  { path: 'editar/:id', component: EditarComponent},
   { path: '**', redirectTo: '/productos', pathMatch: 'full' }
 ];
 

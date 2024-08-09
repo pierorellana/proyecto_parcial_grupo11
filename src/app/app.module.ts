@@ -18,7 +18,8 @@ import { CabeceraComponent } from './pages/cabecera/cabecera.component';
 
 // Importa los servicios de la aplicación
 import { SolicitudesService } from './pages/solicitud/service/solicitudes.service';
-import { ProductoService } from './pages/productos/service/producto.service';
+import { ProductosService } from './pages/productos/service/producto.service';
+import { EditarComponent } from './pages/editar/editar.component';
 
 
 
@@ -29,7 +30,8 @@ import { ProductoService } from './pages/productos/service/producto.service';
     OrdenesComponent,
     DetalleOrdenComponent,
     ProductosComponent,
-    CabeceraComponent, 
+    CabeceraComponent,
+    EditarComponent, 
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { ProductoService } from './pages/productos/service/producto.service';
   ],
   providers: [
     SolicitudesService,
-    ProductoService, 
+    ProductosService, 
   ],
   bootstrap: [AppComponent]
 })

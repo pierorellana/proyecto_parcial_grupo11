@@ -8,25 +8,40 @@ import { SolicitudesService } from '../solicitud/service/solicitudes.service';
   styleUrls: ['./detalle-orden.component.css']
 })
 export class DetalleOrdenComponent implements OnInit {
-  empresaNombre: string = 'DigitalMarket';
-  orden: any;
-  constructor(private route: ActivatedRoute,
-    private solicitudesService: SolicitudesService) { }
+  orden: any = {}; // Inicializa como objeto vacío
+  subtotal: number = 0;
+  envio: number = 0;
+  totalPagar: number = 0;
+
+  constructor(private solicitudesService: SolicitudesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    this.orden = this.solicitudesService.obtenerOrdenPorId(id);
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      if (idParam) {
+        const id = +idParam;
+        this.solicitudesService.ObtenerSolicitudPorId(id).subscribe(data => {
+          console.log('Datos recibidos:', data);
+          this.orden = data || {};
+  
+          // Cálculo de totales
+          this.subtotal = this.orden.producto ? this.orden.producto.precio * this.orden.cantidad : 0;
+          this.envio = this.orden.costoEnvio || 0;
+          this.totalPagar = this.subtotal + this.envio;
+        });
+      } else {
+        console.error('El ID de la orden no se proporcionó.');
+      }
+    });
   }
-  get subtotal(): number {
-    return this.orden.subtotal;
+  
+  // Método para verificar el método de pago
+  esPayPal(): boolean {
+    return this.orden.metodoPago === 'paypal';
   }
 
-  get envio(): number {
-    return this.orden.costoEnvio;
+  esTarjeta(): boolean {
+    return this.orden.metodoPago === 'tarjeta';
   }
-
-  get totalPagar(): number {
-    return this.orden.totalPagar;
-  }
-
 }
+
