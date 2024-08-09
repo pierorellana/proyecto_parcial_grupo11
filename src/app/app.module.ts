@@ -27,6 +27,7 @@ import { SupplierFormComponent } from './pages/supplier-form/supplier-form.compo
 import { InventoryComponent } from './pages/inventory/inventory.component';
 import { EditInventoryComponent } from './pages/edit-inventory/edit-inventory.component';
 import { SoporteComponent } from './pages/soporte/soporte.component';
+import { DialogerrorComponent } from './components/dialogerror/dialogerror.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SoporteComponent } from './pages/soporte/soporte.component';
     SupplierFormComponent,
     InventoryComponent,
     EditInventoryComponent,
-    SoporteComponent
+    SoporteComponent,
+    DialogerrorComponent
   ],
   imports: [
     BrowserModule,

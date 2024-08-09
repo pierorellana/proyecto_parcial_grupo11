@@ -60,7 +60,7 @@ export class ProductsComponent {
 
   constructor(private cartService: CartService) { }
 
-  addToCart() {
-    this.cartService.addToCart();
-  }
+  // addToCart() {
+  //   this.cartService.addToCart();
+  // }
 }

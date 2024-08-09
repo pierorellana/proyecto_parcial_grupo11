@@ -36,10 +36,17 @@
 </mat-toolbar>
 
 <mat-menu #productsMenu="matMenu">
-    <button mat-menu-item routerLink="/products/computer">Computadoras</button>
-    <button mat-menu-item routerLink="/products/phones">Teléfonos</button>
-    <button mat-menu-item routerLink="/products/accesories">Accesorios</button>
+    <button mat-menu-item routerLink="/products/computer">
+    {{ getCategoriaNombre('Computadoras') }}
+  </button>
+    <button mat-menu-item routerLink="/products/phones">
+    {{ getCategoriaNombre('Telefonos') }}
+  </button>
+    <button mat-menu-item routerLink="/products/accesories">
+    {{ getCategoriaNombre('Accesorios') }}
+  </button>
 </mat-menu>
+
 
 <mat-menu #proveedorMenu="matMenu">
     <button mat-menu-item routerLink="/proveedor">

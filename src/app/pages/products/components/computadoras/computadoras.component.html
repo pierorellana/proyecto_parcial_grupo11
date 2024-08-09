@@ -1,4 +1,4 @@
-<div class="computer-products-container">
+<!-- <div class="computer-products-container">
     <h2 class="section-title">Computadoras</h2>
     <div class="computer-products-grid">
         <mat-card class="product-card" *ngFor="let product of computerProducts">
@@ -9,6 +9,31 @@
                 <div class="price-button-container">
                     <p><strong>{{product.price | currency}}</strong></p>
                     <button mat-raised-button color="primary" (click)="addToCart()">Agregar al carrito</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div> -->
+
+<div class="computer-products-container">
+    <h2 class="section-title">Computadoras</h2>
+
+    <div *ngIf="isLoading" class="loading-overlay">
+        <div class="loading-spinner">
+            <mat-progress-spinner [diameter]="50" mode="indeterminate" color="primary">
+            </mat-progress-spinner>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoading" class="computer-products-grid">
+        <mat-card class="product-card" *ngFor="let product of computerProducts">
+            <img mat-card-image src="{{product.imagen || 'assets/default-image.png'}}" alt="Imagen del producto" class="product-image">
+            <mat-card-title>{{product.nombre}}</mat-card-title>
+            <mat-card-content>
+                <p>{{product.descripcion}}</p>
+                <div class="price-button-container">
+                    <p><strong>{{product.precio | currency}}</strong></p>
+                    <button mat-raised-button color="primary" (click)="addToCart(product)">Agregar al carrito</button>
                 </div>
             </mat-card-content>
         </mat-card>

@@ -4,15 +4,15 @@
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div class="form-field">
                 <span>Nombre</span>
-                <input formControlName="name">
+                <input formControlName="nombre">
             </div>
             <div class="form-field">
                 <span>Descripción</span>
-                <textarea formControlName="description"></textarea>
+                <textarea formControlName="descripcion"></textarea>
             </div>
             <div class="form-field">
                 <span>Precio</span>
-                <input formControlName="price" type="number">
+                <input formControlName="precio" type="number">
             </div>
             <div class="form-field" cdkDropList (cdkDropListDropped)="onDrop($event)">
                 <span>Imagen</span>
@@ -33,11 +33,11 @@
         <h2>Productos</h2>
         <mat-card *ngFor="let product of products" class="product-card">
             <div class="product-details">
-                <img [src]="product.image" alt="{{product.name}}" class="product-image">
+                <img [src]="product.imagen" alt="{{product.nombre}}" class="product-image">
                 <div class="product-info">
-                    <h3>{{product.name}}</h3>
-                    <p>${{product.price}}</p>
-                    <p>{{product.description}}</p>
+                    <h3>{{product.nombre}}</h3>
+                    <p>${{product.precio}}</p>
+                    <p>{{product.descripcion}}</p>
                     <div class="product-actions">
                         <button mat-button (click)="editProduct(product)">Editar</button>
                         <button mat-button color="warn" (click)="deleteProduct(product)">Eliminar</button>
@@ -46,5 +46,4 @@
             </div>
         </mat-card>
     </div>
-
 </div>

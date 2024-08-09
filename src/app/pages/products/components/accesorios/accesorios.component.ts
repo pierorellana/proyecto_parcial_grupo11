@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
+import { Categoria } from 'src/app/interfaces/categoria.interface';
+import { ServicioService } from 'src/app/servicio/servicio.service';
 
 @Component({
   selector: 'app-accesorios',
@@ -7,85 +9,42 @@ import { CartService } from 'src/app/cart.service';
   styleUrls: ['./accesorios.component.css'],
 })
 export class AccesoriosComponent {
-  accesoriosProducts = [
-    {
-      name: 'Apple Pencil (2nd Generation)',
-      description: 'The perfect companion for your iPad.',
-      price: 129.99,
-      image: 'assets/img2.png',
-    },
-    {
-      name: 'Microsoft Surface Pro 8',
-      description: 'La Surface más potente hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img7.png',
-    },
 
-    {
-      name: 'Bose Noise Cancelling Headphones 700',
-      description: 'Escuche el mundo en sus propios términos.',
-      price: 379.99,
-      image: 'assets/img3.png',
-    },
-    {
-      name: 'Apple Pencil (2nd Generation)',
-      description: 'The perfect companion for your iPad.',
-      price: 129.99,
-      image: 'assets/img2.png',
-    },
-    {
-      name: 'Apple Pencil (2nd Generation)',
-      description: 'The perfect companion for your iPad.',
-      price: 129.99,
-      image: 'assets/img2.png',
-    },
-    {
-      name: 'Bose Noise Cancelling Headphones 700',
-      description: 'Escuche el mundo en sus propios términos.',
-      price: 379.99,
-      image: 'assets/img3.png',
-    },
-    {
-      name: 'Bose Noise Cancelling Headphones 700',
-      description: 'Escuche el mundo en sus propios términos.',
-      price: 379.99,
-      image: 'assets/img3.png',
-    },
-    {
-      name: 'Microsoft Surface Pro 8',
-      description: 'La Surface más potente hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img7.png',
-    },
-    {
-      name: 'Apple Pencil (2nd Generation)',
-      description: 'The perfect companion for your iPad.',
-      price: 129.99,
-      image: 'assets/img2.png',
-    },
-    {
-      name: 'Bose Noise Cancelling Headphones 700',
-      description: 'Escuche el mundo en sus propios términos.',
-      price: 379.99,
-      image: 'assets/img3.png',
-    },
-    {
-      name: 'Microsoft Surface Pro 8',
-      description: 'La Surface más potente hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img7.png',
-    },
-    {
-      name: 'Microsoft Surface Pro 8',
-      description: 'La Surface más potente hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img7.png',
-    },
-  ];
+   accesoriesProducts: any[] = [];
+  constructor(
+    private cartService: CartService,
+    private categoriaService: ServicioService
+  ) {}
 
-  constructor(private cartService: CartService) {}
+  ngOnInit(): void {
+    this.categoriaService.getCategorias().subscribe(
+      (data: Categoria[]) => {
+        const accesoriesCategory = data.find(
+          (cat) => cat.nombrecategoria.toLowerCase() === 'accesorios'
+        );
+        if (accesoriesCategory) {
+          this.accesoriesProducts = accesoriesCategory.productos;
 
-  addToCart() {
-    this.cartService.addToCart();
+          const images = [
+            'assets/img2.png',
+            'assets/img7.png',
+            'assets/img3.png'
+          ];
+
+          this.accesoriesProducts.forEach((product, index) => {
+            product.imagen = images[index % images.length];
+          });
+
+          console.log('productos con imágenes:', this.accesoriesProducts);
+        }
+      },
+      (error) => {
+        console.error('Error al obtener las categorías:', error);
+      }
+    );
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
   }
 }

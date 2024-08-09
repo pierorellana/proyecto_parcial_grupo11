@@ -1,23 +1,23 @@
-<form class="example-form">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
     <div class="separar">
         <label>Iniciar Sesión</label>
     </div>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Usuario</mat-label>
-            <input matInput placeholder="Usuario" />
+            <input matInput formControlName="nombreUsuario" placeholder="Usuario" />
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
     </p>
     <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="contraseña" />
         <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
     <div class="button-container">
-        <button mat-raised-button routerLink="/products">Ingresar</button>
+        <button mat-raised-button type="submit">Ingresar</button>
         <button mat-raised-button routerLink="/register">Registrarse</button>
     </div>
 </form>

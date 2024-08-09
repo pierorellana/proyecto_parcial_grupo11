@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
+import { Categoria } from 'src/app/interfaces/categoria.interface';
+import { ServicioService } from 'src/app/servicio/servicio.service';
 
 @Component({
   selector: 'app-celulares',
@@ -7,85 +9,40 @@ import { CartService } from 'src/app/cart.service';
   styleUrls: ['./celulares.component.css'],
 })
 export class CelularesComponent {
-  phoneProducts = [
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
+  phoneProducts: any[] = [];
+  constructor(
+    private cartService: CartService,
+    private categoriaService: ServicioService
+  ) {}
 
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
-    {
-      name: 'iPhone 15 Pro Max',
-      description: 'El iPhone más avanzado hasta el momento.',
-      price: 1099.99,
-      image: 'assets/img6.png',
-    },
-    {
-      name: 'Samsung Galaxy S23 Ultra',
-      description: 'La mejor experiencia en teléfonos inteligentes.',
-      price: 1199.99,
-      image: 'assets/img1.png',
-    },
-  ];
+  ngOnInit(): void {
+    this.categoriaService.getCategorias().subscribe(
+      (data: Categoria[]) => {
+        const phoneCategory = data.find(
+          (cat) => cat.nombrecategoria.toLowerCase() === 'telefonos'
+        );
+        if (phoneCategory) {
+          this.phoneProducts = phoneCategory.productos;
 
-  constructor(private cartService: CartService) {}
+          const images = [
+            'assets/img6.png',
+            'assets/img1.png',
+          ];
 
-  addToCart() {
-    this.cartService.addToCart();
+          this.phoneProducts.forEach((product, index) => {
+            product.imagen = images[index % images.length];
+          });
+
+          console.log('productos con imágenes:', this.phoneProducts);
+        }
+      },
+      (error) => {
+        console.error('Error al obtener las categorías:', error);
+      }
+    );
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
   }
 }
