@@ -1,106 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { EmpAddEditComponent } from '../emp-add-edit/emp-add-edit.component';
-
-export interface PeriodicElement {
-  nombre: string;
-  apellido: string;
-  email: string;
-  fecha: Date;
-  genero: string;
-  pago: string;
-  domicilio: string;
-  items: number;
-  total: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-  {
-    nombre: 'Luis',
-    apellido: 'Pilco',
-    email: 'lpilcomayorga@gmail.com',
-    fecha: new Date('2023-02-02'),
-    genero: 'Masculino',
-    pago: 'Efectivo',
-    domicilio: 'Portete',
-    items: 2,
-    total: 100,
-  },
-];
+import { ServicesService } from 'src/app/services/services.service';
+import { Cliente } from './client.interface';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css'],
 })
-export class ClientComponent {
+export class ClientComponent implements OnInit {
   displayedColumns: string[] = [
     'nombre',
     'apellido',
@@ -113,11 +23,33 @@ export class ClientComponent {
     'total',
   ];
 
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Cliente>([]);
 
-  constructor(private _dialog: MatDialog) {}
+  constructor(
+    private clienteService: ServicesService,
+    private _dialog: MatDialog
+  ) {}
 
-  openAddEditEmpForm() {
-    this._dialog.open(EmpAddEditComponent);
+  ngOnInit(): void {
+    this.loadClientes();
+  }
+
+  loadClientes(): void {
+    this.clienteService.getClientes().subscribe(
+      (clientes) => {
+        this.dataSource.data = clientes;
+      },
+      (error) => {
+        console.error('Error fetching client data', error);
+      }
+    );
+  }
+
+  openAddEditEmpForm(): void {
+    const dialogRef = this._dialog.open(EmpAddEditComponent);
+
+    dialogRef.componentInstance.clienteAdded.subscribe(() => {
+      this.loadClientes(); // Recarga los datos cuando el cliente es agregado
+    });
   }
 }

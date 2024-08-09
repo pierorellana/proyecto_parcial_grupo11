@@ -1,73 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+
 import { SupplierFormComponent } from '../supplier-form/supplier-form.component';
-
-export interface Supplier {
-  name: string;
-  contact: string;
-  products: string[];
-  deliveryTime?: string;
-  quality: number;
-}
-
-const SUPPLIER_DATA: Supplier[] = [
-  {
-    name: 'Pierre Orellana',
-    contact: '+1 (555) 123-4567',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '3-5 días',
-    quality: 4.8,
-  },
-  {
-    name: 'Denisse Pinto',
-    contact: '+44 (0) 20 1234 5678',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '2-4 días',
-    quality: 4.6,
-  },
-  {
-    name: 'Luis Pilco',
-    contact: '+61 (0) 3 9876 5432',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '4-7 días',
-    quality: 4.3,
-  },
-  {
-    name: 'Alexander Hallo',
-    contact: '+49 (0) 30 1234 5678',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '2-3 días',
-    quality: 4.9,
-  },
-  {
-    name: 'Pepito Delgado',
-    contact: '+49 (0) 30 1234 5678',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '2-3 días',
-    quality: 4.9,
-  },
-  {
-    name: 'Pierre Orellana',
-    contact: '+44 (0) 20 1234 5678',
-    products: ['MacBook', 'iPad', 'iPhone'],
-    deliveryTime: '2-4 días',
-    quality: 4.6,
-  },
-];
+import { ServicesService } from 'src/app/services/services.service';
+import { Supplier } from './supplier.interface';
 
 @Component({
   selector: 'app-suppliers',
   templateUrl: './suppliers.component.html',
-  styleUrls: ['./suppliers.component.css'],
+  styleUrls: ['./suppliers.component.css']
 })
 export class SuppliersComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'contact', 'products', 'deliveryTime', 'quality', 'actions'];
-  dataSource = new MatTableDataSource<Supplier>(SUPPLIER_DATA);
+  displayedColumns: string[] = ['nombre', 'email', 'telefono', 'direccion', 'porductos', 'tiempoentrega', 'calidad', 'actions'];
+  dataSource = new MatTableDataSource<Supplier>([]);
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    private supplierService: ServicesService,
+    public dialog: MatDialog
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadSuppliers();
+  }
+
+  loadSuppliers(): void {
+    this.supplierService.getSuppliers().subscribe(
+      (suppliers) => {
+        this.dataSource.data = suppliers;
+      },
+      (error) => {
+        console.error('Error fetching supplier data', error);
+      }
+    );
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -82,8 +48,9 @@ export class SuppliersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dataSource.data = [...this.dataSource.data, result];
-        this.dataSource._updateChangeSubscription();
+        this.supplierService.addSupplier(result).subscribe(newSupplier => {
+          this.dataSource.data = [...this.dataSource.data, newSupplier];
+        });
       }
     });
   }
@@ -96,17 +63,21 @@ export class SuppliersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const index = this.dataSource.data.findIndex(s => s.name === supplier.name);
-        if (index !== -1) {
-          this.dataSource.data[index] = result;
-          this.dataSource._updateChangeSubscription();
-        }
+        this.supplierService.updateSupplier(result).subscribe(updatedSupplier => {
+          const index = this.dataSource.data.findIndex(s => s.proveedorId === supplier.proveedorId);
+          if (index !== -1) {
+            this.dataSource.data[index] = updatedSupplier;
+            this.dataSource._updateChangeSubscription();
+          }
+        });
       }
     });
   }
 
   deleteSupplier(supplier: Supplier) {
-    this.dataSource.data = this.dataSource.data.filter(s => s.name !== supplier.name);
-    this.dataSource._updateChangeSubscription();
+    this.supplierService.deleteSupplier(supplier.proveedorId).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(s => s.proveedorId !== supplier.proveedorId);
+      this.dataSource._updateChangeSubscription();
+    });
   }
 }

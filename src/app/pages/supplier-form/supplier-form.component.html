@@ -1,27 +1,42 @@
 <h2 mat-dialog-title>{{ data ? "Editar Proveedor: " : "Agregar Proveedor" }}</h2>
-<form [formGroup]="supplierForm">
-    <mat-form-field appearance="fill" class="full-width">
-        <input matInput formControlName="name" placeholder="Nombre" />
+<form [formGroup]="supplierForm" (ngSubmit)="onFormSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
     </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <input matInput formControlName="contact" placeholder="Contacto" />
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
     </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <input matInput formControlName="quality" placeholder="Calidad" type="number" />
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telefono" />
     </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <input matInput formControlName="deliveryTime" placeholder="Tiempo de Entrega" />
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="direccion" />
     </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <textarea matInput formControlName="products" placeholder="Productos (separados por comas)"></textarea>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Productos</mat-label>
+      <input matInput formControlName="porductos" />
     </mat-form-field>
-
-    <div class="actions">
-        <button mat-button type="button" (click)="onNoClick()">Cancelar</button>
-        <button mat-raised-button type="submit" (click)="onSubmit()">Guardar</button>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tiempo de Entrega</mat-label>
+      <input matInput formControlName="tiempoentrega" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Calidad</mat-label>
+      <input matInput type="number" formControlName="calidad" />
+    </mat-form-field>
+  
+    <div mat-dialog-actions>
+      <!--<button mat-button (click)="dialogRef.close()">Cancelar</button>-->
+      <button mat-button color="primary" type="submit">Guardar</button>
     </div>
-</form>
+  </form>

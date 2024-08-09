@@ -21,6 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [],
@@ -46,7 +48,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDatepickerModule,
     MatGridListModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
 })
 export class MaterialModule {}

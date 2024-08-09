@@ -1,38 +1,38 @@
-<form class="example-form">
+<form class="example-form" (ngSubmit)="registrarUsuario()">
     <div class="separar">
         <label class="titulo">Registrate</label>
     </div>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Ingrese su nombre" />
+            <input matInput placeholder="Ingrese su nombre" [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario" required/>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Apellido</mat-label>
-            <input matInput placeholder="Ingrese su apellido" />
+            <input matInput placeholder="Ingrese su apellido" [(ngModel)]="usuario.apellido" name="apellido" required/>
         </mat-form-field>
     </div>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Correo</mat-label>
-            <input matInput placeholder="Ingrese su e-mail" />
+            <input matInput placeholder="Ingrese su e-mail" [(ngModel)]="usuario.correo" name="correo" required/>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" />
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.contrasena" name="contrasena" required/>
             <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
         </mat-form-field>
     </div>
     <div class="row">
         <div class="rol">
             <label>ROL:</label>
-            <mat-radio-group aria-label="Select an option">
+            <mat-radio-group [(ngModel)]="usuario.rolId" name="rolId" aria-label="Select an option">
                 <mat-radio-button value="1">Administrativo</mat-radio-button>
                 <mat-radio-button value="2">General</mat-radio-button>
             </mat-radio-group>
         </div>
     </div>
-    <button mat-raised-button routerLink="/login">Aceptar</button>
+    <button mat-raised-button type="submit">Aceptar</button>
 </form>
